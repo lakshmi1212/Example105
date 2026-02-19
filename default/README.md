@@ -1,49 +1,34 @@
-# Example105: Math Operations
+# Example105 Math Operations
 
-## Overview
-This repository provides basic math operations (addition and subtraction) with corresponding unit tests using pytest. It is designed for CI/CD integration with GitHub Actions.
+This repository implements basic math operations (addition, subtraction) and provides comprehensive tests and CI workflow integration.
 
 ## Project Structure
 
-```
-src/
-  math_operations.py
-  __init__.py
-
-tests/
-  test_add.py
-  test_subtract.py
-  __init__.py
-
-default/
-  README.md
-  math.json
-  requirements.txt
-```
+- `src/` - Source code for math operations
+- `tests/` - Pytest test cases for all operations
+- `default/requirements.txt` - Python dependencies
+- `default/math.json` - CI workflow metadata
 
 ## Usage
 
 ```
 from src.math_operations import add, subtract
-
-result1 = add(2, 3)        # 5
-result2 = subtract(5, 2)   # 3
+print(add(2, 3))        # 5
+print(subtract(5, 3))   # 2
 ```
 
 ## Running Tests
 
 Install dependencies:
-
 ```
 pip install -r default/requirements.txt
 ```
 
-Run tests:
-
+Run all tests:
 ```
-pytest tests/ -v --tb=short --junitxml=reports/report.xml --html=reports/report.html --self-contained-html
+pytest tests/
 ```
 
-## CI/CD
+## CI Workflow
 
-See `.github/workflows/ci.yml` for workflow configuration. The pipeline runs on feature branches and main, generating HTML and JUnit test reports.
+The workflow file is located at `.github/workflows/ci.yml` and is generated based on `default/math.json` metadata.
