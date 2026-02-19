@@ -1,55 +1,29 @@
-# Example105: Math Operations
+# Example105 Math Operations
 
-This repository provides basic math operations (addition and subtraction) with full pytest-based test coverage and CI workflow integration.
-
-## Project Structure
-
-```
-src/
-  math_operations.py
-  __init__.py
-
-tests/
-  test_add.py
-  test_subtract.py
-  __init__.py
-
-default/
-  requirements.txt
-  README.md
-  math.json
-```
+## Overview
+This project implements basic math operations (addition and subtraction) with production-ready test automation and CI/CD integration.
 
 ## Usage
 
-Install dependencies:
+### Math Operations
+- `src/math_operations.py` provides `add(a, b)` and `subtract(a, b)` functions.
 
-```bash
+### Running Tests
+Install dependencies:
+```
 pip install -r default/requirements.txt
 ```
-
 Run tests:
-
-```bash
-pytest tests/
+```
+pytest tests/ -v --tb=short --junitxml=reports/report.xml --html=reports/report.html --self-contained-html
 ```
 
-## CI/CD
+## CI Workflow
+- CI is triggered on push to `Feature1` and pull requests to `main`.
+- Workflow file: `.github/workflows/ci.yml`
+- Reports are generated in the `reports` folder.
 
-The repository is designed for GitHub Actions CI/CD using the workflow in `.github/workflows/ci.yml` (to be generated from `default/math.json`).
-
-## Math Operations
-
-- `add(a, b)`: Returns the sum of `a` and `b`.
-- `subtract(a, b)`: Returns the result of `a - b`.
-
-## Test Coverage
-
-- `tests/test_add.py`: Tests for addition.
-- `tests/test_subtract.py`: Tests for subtraction.
-
-## Requirements
-
-- Python 3.10+
-- pytest
-- pytest-html
+## Structure
+- `src/`: Source code
+- `tests/`: Pytest test cases
+- `default/`: Project documentation, requirements, and metadata
