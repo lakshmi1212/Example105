@@ -9,20 +9,22 @@ on:
       - main
 
 jobs:
-  ci_python_tests:
+  python_ci:
     runs-on: ubuntu-latest
-    name: Run Python Tests
+    name: Python CI
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
       - name: Install dependencies
-        run: pip install -r default/requirements.txt
+        run: |
+          pip install -r default/requirements.txt
       - name: Create reports directory
-        run: mkdir -p reports
+        run: |
+          mkdir -p reports
       - name: Run tests
         run: |
           python -m pytest tests/ -v --tb=short --junitxml=reports/report.xml --html=reports/report.html --self-contained-html
