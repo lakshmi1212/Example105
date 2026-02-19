@@ -54,7 +54,7 @@
   "jobs": [
     {
       "job_id": "ci",
-      "job_name": "Run Pytest",
+      "job_name": "Run Python Tests",
       "runs_on": "ubuntu-latest",
       "steps": [
         {
@@ -63,17 +63,17 @@
           "action": "actions/checkout@v4"
         },
         {
-          "step_name": "Set up Python",
+          "step_name": "Set up Python 3.10",
           "action_type": "uses",
-          "action": "actions/setup-python@v4"
+          "action": "actions/setup-python@v5"
         },
         {
           "step_name": "Install dependencies",
           "action_type": "run",
-          "command": "python -m pip install --upgrade pip && pip install -r default/requirements.txt"
+          "command": "pip install -r default/requirements.txt"
         },
         {
-          "step_name": "Run tests",
+          "step_name": "Run Pytest",
           "action_type": "run",
           "command": "python -m pytest tests/ -v --tb=short --junitxml=reports/report.xml --html=reports/report.html --self-contained-html"
         }
